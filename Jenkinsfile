@@ -18,14 +18,14 @@ pipeline{
 		stage('Login') {
 
 			steps {
-				sh 'echo 21054ffb-417a-42fc-9cf0-f195cc95c440 | docker login -u bernardo9999 --password-stdin'
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
 		}
 
 		stage('Push') {
 
 			steps {
-				sh 'docker push jenkins-example/nodeapp:latest'
+				sh 'docker push bernardo9999/nodeapp:latest'
 			}
 		}
 	}
